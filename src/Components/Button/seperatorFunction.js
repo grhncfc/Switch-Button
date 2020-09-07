@@ -1,13 +1,11 @@
-const seperator = (classNameVariable) => {
-    const cNameIs = classNameVariable ? classNameVariable : '' ;
+import styles from "./Button.module.scss";
+export const seperator = (classNameVariable) => {
+    const cNameIs = classNameVariable ? classNameVariable : '';
     const cNameArray = cNameIs.split(' ');
     let classNames = [];
-    for (let i=0; i < cNameArray.length; i++ ){
+    for (let i = 0; i < cNameArray.length; i++) {
         classNames = classNames.concat(styles[cNameArray[i]]);
     }
-    console.log(classNames);
     const newNames = classNames.join(" ");
-    console.log(newNames);
     return newNames;
 }
-exports.seperator = seperator() ;

@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import styles from "./App.module.scss"
+import Button from "./Components/Button/Button";
+import Switch from "./Components/Switch/Switch";
+
 
 function App() {
+  const [containerStyle,setContainerStyle] = useState({background: "white" });
+  const onChange = (e,stil) =>{
+  setContainerStyle(stil ? {background: "white" } : {background: "black" });
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={containerStyle} className={styles.container}>
+      <Button className={"btnStyle2"} text={"BUTTON"} />
+      <Switch onChange={onChange} />
+      <Switch />
     </div>
   );
 }
-
 export default App;
