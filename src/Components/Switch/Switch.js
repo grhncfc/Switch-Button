@@ -1,22 +1,26 @@
-import React,{useState} from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import {seperator} from "./seperatorFunction";
+import React, {useState} from 'react';
+import {v4 as uuidv4} from 'uuid';
+import {seperator} from "../../utils/common/Functions";
+import styles from "./Switch.module.scss";
 
 const Switch = (props) => {
-    const [style,setStyle] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
     const randomId = uuidv4();
-    const forLabel = seperator(props.classNameForLabel);
-    const forInput = seperator(props.classNameForInput);
+    const forLabel = seperator(styles, props.classNameForLabel);
+    const forInput = seperator(styles, props.classNameForInput);
+
     const onChange = (e) => {
-        setStyle(!style);
-        props.onChange(e,style);
+        setIsChecked(!isChecked);
+        props.onChange(e, isChecked);
     }
     const onChangeDefault = (e) => {
-        setStyle(!style);
-    }
-      return (
+        setIsChecked(!isChecked);
+    };
+
+    return (
         <>
-            <input {...props} checked={style} onChange={props.onChange ? onChange  : onChangeDefault} type="checkbox" id={randomId} className={forInput} />
+            <input {...props} checked={isChecked} onChange={onChange} type="checkbox" id={randomId}
+                   className={forInput}/>
             <label htmlFor={randomId} className={forLabel}/>
         </>
     );

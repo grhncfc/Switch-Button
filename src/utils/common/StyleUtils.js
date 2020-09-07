@@ -1,5 +1,4 @@
-import styles from "./Switch.module.scss";
-export const seperator = (classNameVariable) => {
+export const separator = (styles, classNameVariable) => {
     const cNameIs = classNameVariable ? classNameVariable : '';
     const cNameArray = cNameIs.split(' ');
     let classNames = [];
@@ -8,4 +7,4 @@ export const seperator = (classNameVariable) => {
     }
     const newNames = classNames.join(" ");
     return newNames;
-}
+};
