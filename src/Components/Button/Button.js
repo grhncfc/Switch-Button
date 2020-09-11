@@ -1,21 +1,29 @@
 import React from 'react';
-import ReactLoading from "react-loading";
-import styles from "./Button.module.scss";
-import {seperator} from "../../utils/common/Functions";
+import ReactLoading from 'react-loading';
+import styles from "./_button.module.scss";
 
 const Button = (props) => {
-    const btnClassName = seperator(styles, props.className);
 
-    //TODO remove style prop and add default styles. style={{display: "flex", justifyContent: "center", alignItems: "center"}}
+    //TODO remove style prop and add default styles.
     //TODO allow users to freely override the default styles. (props.className)
     //TODO change this button into <Button></Button> and allow dynamic content.
+    const onClick = () => {
+
+        if (props.onClick) {
+            props.onClick();
+        }
+        ;
+    };
 
     return (
-        <button {...props} onClick={props.onClick}
-                className={styles.default}>
+        <button
+            className={props.loading ? `${styles.default} ${styles.loadingDefault} ${props.className}` : `${styles.default} ${props.className}`}
+            onClick={onClick}>
+            {props.children}
             {
-                props.loading ?
-                    <ReactLoading type={"spinningBubbles"} width={"50%"} height={"100%"} color={"white"}/> : props.text
+                props.loading &&
+                <ReactLoading className={styles.loading} type={"spinningBubbles"} width={"25%"} height={"50%"}
+                              color={props.loadingColor ? props.loadingColor : "black"}/>
             }
         </button>
     );

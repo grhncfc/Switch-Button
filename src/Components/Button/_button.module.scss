@@ -1,0 +1,45 @@
+$color: #ad701c;
+$colorh: #7c5014;
+$colora: #df9024;
+
+.default {
+  width: 90px;
+  height: 40px;
+  background-color: $color;
+  border-style: none;
+  border-radius: 10px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &:hover {
+    background-color: $colorh;
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none !important;
+  }
+
+  &:active {
+    background-color: $colora;
+  }
+
+  &:disabled {
+    border: 1px solid gray !important;
+    cursor: not-allowed !important;
+    background: none !important;
+    color: gray !important;
+  }
+}
+
+.loading {
+  z-index: 10;
+  position: absolute;
+}
+
+.loadingDefault {
+  pointer-events: none;
+}
