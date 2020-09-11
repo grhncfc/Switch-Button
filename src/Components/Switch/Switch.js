@@ -1,23 +1,29 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {v4 as uuidv4} from 'uuid';
 import styles from "./_switch.module.scss";
 
-const Switch = (props) => {
+const Switch = ({onChange, classNameForInput, thumbClassName, ...restProps}) => {
     const [isChecked, setIsChecked] = useState(false);
+    const node = useRef();
     const randomId = uuidv4();
-    const onChange = (e) => {
-        setIsChecked(!isChecked);
-        if (props.onChange) {
-            props.onChange(e, isChecked);
+    useEffect(() => {
+        if (onChange) {
+            onChange(node.current, isChecked);
         }
+    }, [isChecked]);
+
+    const onInputChange = (e) => {
+        setIsChecked(!isChecked);
     };
+    //
     return (
         <>
-            <input className={`${styles.defaultInput} ${props.classNameForInput}`} {...props} checked={isChecked}
-                   onChange={onChange} type="checkbox"
+            <input {...restProps} ref={node} className={`${styles.defaultInput} ${classNameForInput}`}
+                   checked={isChecked}
+                   onChange={onInputChange} type="checkbox"
                    id={randomId}
             />
-            <label className={`${styles.defaultLabel} ${props.classNameForLabel}`} htmlFor={randomId}/>
+            <label className={`${styles.defaultLabel} ${thumbClassName}`} htmlFor={randomId}/>
         </>
     );
 };

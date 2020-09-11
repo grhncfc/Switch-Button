@@ -1,11 +1,9 @@
-$color: #ad701c;
-$colorh: #7c5014;
-$colora: #df9024;
+@import "src/utils/styles/colors";
 
 .default {
   width: 90px;
   height: 40px;
-  background-color: $color;
+  background-color: $button_default;
   border-style: none;
   border-radius: 10px;
   color: black;
@@ -15,7 +13,7 @@ $colora: #df9024;
   position: relative;
 
   &:hover {
-    background-color: $colorh;
+    background-color: $button_hover;
     cursor: pointer;
   }
 
@@ -24,7 +22,7 @@ $colora: #df9024;
   }
 
   &:active {
-    background-color: $colora;
+    background-color: $button_active;
   }
 
   &:disabled {

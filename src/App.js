@@ -13,16 +13,16 @@ function App() {
             setLoading(false);
         }, 2000);
     };
-    const onChange = (e, checked) => {
-        console.log(e.target.checked, checked)
-    }
+    const onChange = (node, checked) => {
+        console.log(node.checked, checked);
+    };
     return (
         <div className={styles.container}>
             <Button onClick={onClick} loading={loading}>
                 <div className={styles.btnText}>Button</div>
                 <DeleteIcon className={styles.iconStyle}/>
             </Button>
-            <Switch onChange={onChange}/>
+            <Switch thumbClassName={styles.berk} onChange={onChange}/>
         </div>
     );
 }
